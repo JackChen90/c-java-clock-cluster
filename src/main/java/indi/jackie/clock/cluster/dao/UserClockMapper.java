@@ -5,5 +5,5 @@ package indi.jackie.clock.cluster.dao;
  * @create 2017/10/26
  * @description UserClockMapper
  */
-public class UserClockMapper {
+public interface UserClockMapper {
 }
