@@ -112,6 +112,7 @@
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
+                <version>2.9</version>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -137,6 +138,7 @@
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
+                <version>3.5.1</version>
             </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>

@@ -5,36 +5,48 @@
 
 <generatorConfiguration>
     <!-- 具体配置内容 -->
+    <!--jdbc驱动-->
     <classPathEntry
             location="/Users/jackiechen/Apps/apache-maven-3.5.0/repository/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar"/>
 
     <context id="MysqlTables" targetRuntime="MyBatis3">
+
+        <!--取消注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--连接信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://172.19.216.49:3306/clock-cluster?useUnicode=true&amp;characterEncoding=utf8"
                         userId="keycloak"
                         password="admin">
         </jdbcConnection>
 
-        <javaTypeResolver >
-            <property name="forceBigDecimals" value="false" />
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="indi.jackie.clock.cluster.model" targetProject="src\main\java">
-            <property name="enableSubPackages" value="true" />
-            <property name="trimStrings" value="true" />
+        <javaModelGenerator targetPackage="indi.jackie.clock.cluster.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="indi.jackie.clock.cluster.dao"  targetProject="c-java-clock-cluster\src">
-            <property name="enableSubPackages" value="true" />
+        <sqlMapGenerator targetPackage="indi.jackie.clock.cluster.dao" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="indi.jackie.clock.cluster.dao"  targetProject="\c-java-clock-cluster\src">
-            <property name="enableSubPackages" value="true" />
+        <javaClientGenerator type="XMLMAPPER" targetPackage="indi.jackie.clock.cluster.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="user_clock_time" domainObjectName="UserClockTime" >
+        <table tableName="user_clock_time" domainObjectName="UserClockTime"
+               enableInsert="false" enableSelectByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false">
             <!--useActualColumnNames 若为true，则采用列名作为实体属性名；为false则会将名称转为驼峰形式-->
-            <property name="useActualColumnNames" value="false" />
+            <property name="useActualColumnNames" value="false"/>
             <!--用来指定自动生成主键的属性，MBG在生成insert的SQL映射文件中插入一个<selectKey>元素，其包含两个必选属性
                 column：列名
                 sqlStatement:返回新值的Sql语句，预定义值：Cloudscape DB2 DB2_MF Derby HSQLDB Informix MySql SqlServer SYBASE JDBC-->
